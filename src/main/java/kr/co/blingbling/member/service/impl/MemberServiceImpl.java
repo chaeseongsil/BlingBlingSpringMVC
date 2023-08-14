@@ -30,8 +30,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int deleteMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.deleteMember(sqlSession, memberId);
+		return result;
 	}
 
 	@Override
@@ -48,14 +48,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member selectOneFindId(Member mOne) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = mStore.selectOneFindId(sqlSession, mOne);
+		return member;
 	}
 
 	@Override
 	public Member selectOneFindPw(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+		Member mOne = mStore.selectOneFindPw(sqlSession, member);
+		return mOne;
 	}
 
 }

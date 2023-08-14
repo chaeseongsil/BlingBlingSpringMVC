@@ -18,4 +18,6 @@ public interface MemberStore {
 	
 	public Member selectOneFindId(SqlSession session, Member mOne);
 	
+	public Member selectOneFindPw(SqlSession session, Member member);
+	
 }

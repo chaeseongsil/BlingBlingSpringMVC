@@ -19,12 +19,12 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
-	
+
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
 	public String showloginForm() {
 		return "member/login";
 	}
-	
+
 	@RequestMapping(value="/member/login.do", produces="text/html;charset=UTF-8;", method=RequestMethod.POST)
 	public @ResponseBody String memberLogin(
 			@RequestParam("userId") String memberId
@@ -120,6 +120,47 @@ public class MemberController {
 			return "<script>alert('정상적으로 탈퇴되었습니다. 이용해주셔서 감사합니다.'); location.href='/index.jsp'</script>";
 		}else {
 			return "<script>alert('회원탈퇴를 실패하였습니다.'); history.back();</script>";
+		}
+	}
+	
+	@RequestMapping(value="/member/findId.do", method=RequestMethod.GET)
+	public String showFindIdView() {
+		return "member/findId";
+	}
+	
+	@RequestMapping(value="/member/findId.do", produces="text/html;charset=UTF-8;", method=RequestMethod.POST)
+	public @ResponseBody String findMemberId(
+			@RequestParam("userName") String memberName
+			, @RequestParam("userEmail") String memberEmail
+			) {
+		Member member = new Member();
+		member.setMemberName(memberName);
+		member.setMemberEmail(memberEmail);
+		Member mOne = service.selectOneFindId(member);
+		if(mOne != null) {
+			return "<script>alert('ID는 "+mOne.getMemberId()+"입니다. 로그인 페이지로 이동합니다.'); location.href='/member/login.do';</script>";
+		}else {
+			return "<script>alert('회원정보가 존재하지 않습니다.'); history.back();</script>";
+		}
+	}
+	
+	@RequestMapping(value="/member/findPw.do", method=RequestMethod.GET)
+	public String showFindPwView() {
+		return "member/findPw";
+	}
+	
+	@RequestMapping(value="/member/findPw.do", produces="text/html;charset=UTF-8;", method=RequestMethod.POST)
+	public @ResponseBody String findMemberPw(
+			@RequestParam("userId") String memberId
+			, @RequestParam("userName") String memberName
+			, @RequestParam("userEmail") String memberEmail
+			) {
+		Member member = new Member(memberId, memberName, memberEmail);
+		Member mOne = service.selectOneFindPw(member);
+		if(mOne != null) {
+			return "<script>alert('비밀번호는 "+mOne.getMemberPw()+"입니다. 로그인 페이지로 이동합니다.'); location.href='/member/login.do';</script>";
+		}else {
+			return "<script>alert('회원정보가 존재하지 않습니다.'); history.back();</script>";
 		}
 	}
 }

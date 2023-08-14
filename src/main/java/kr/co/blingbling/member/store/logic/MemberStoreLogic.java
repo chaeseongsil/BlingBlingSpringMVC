@@ -23,8 +23,8 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public int deleteMember(SqlSession session, String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = session.delete("MemberMapper.deleteMember", memberId);
+		return result;
 	}
 
 	@Override
@@ -41,8 +41,14 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public Member selectOneFindId(SqlSession session, Member mOne) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = session.selectOne("MemberMapper.selectOneFindId", mOne);
+		return member;
+	}
+
+	@Override
+	public Member selectOneFindPw(SqlSession session, Member member) {
+		Member mOne = session.selectOne("MemberMapper.selectOneFindPw", member);
+		return mOne;
 	}
 
 }

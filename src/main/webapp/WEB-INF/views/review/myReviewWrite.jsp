@@ -8,10 +8,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BlingBling : handcraft jewelry shop</title>
-        <link rel="stylesheet" href="..../resources/css/all.css">
-        <link rel="stylesheet" href="..../resources/css/footer.css">
-        <link rel="stylesheet" href="..../resources/css/header.css">
-        <link rel="stylesheet" href="..../resources/css/myReviewWrite.css">
+        <link rel="stylesheet" href="../resources/css/all.css">
+        <link rel="stylesheet" href="../resources/css/footer.css">
+        <link rel="stylesheet" href="../resources/css/header.css">
+        <link rel="stylesheet" href="../resources/css/myReviewWrite.css">
         <style>
             .login-form-btn {
                 font-size : 15px;
